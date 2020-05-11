@@ -3,83 +3,80 @@
 """""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
 
+Plug '/usr/local/opt/fzf'
+Plug 'airblade/vim-gitgutter'
+Plug 'airblade/vim-rooter'
+Plug 'editorconfig/editorconfig-vim'
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'machakann/vim-highlightedyank'
+Plug 'mbbill/undotree'
+Plug 'mitsuhiko/vim-jinja'
+Plug 'morhetz/gruvbox'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'pangloss/vim-javascript'
+Plug 'plasticboy/vim-markdown'
+Plug 'saltstack/salt-vim'
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
-Plug 'vimwiki/vimwiki'
+Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'jiangmiao/auto-pairs'
-Plug 'sjl/gundo.vim'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'airblade/vim-gitgutter'
-Plug 'fatih/vim-go'
-Plug 'junegunn/goyo.vim'
-Plug 'rust-lang/rust.vim'
-Plug 'racer-rust/vim-racer'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'ternjs/tern_for_vim'
-Plug 'carlitux/deoplete-ternjs'
-Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'w0rp/ale'
-Plug 'davidhalter/jedi-vim'
-Plug 'zchee/deoplete-jedi'
-Plug 'zchee/deoplete-go'
-Plug 'machakann/vim-highlightedyank'
-Plug 'autozimu/LanguageClient-neovim'
-Plug 'gregsexton/gitv'
+Plug 'vimwiki/vimwiki'
 
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""
 " Options
 """""""""""""""""""""""""""""""""""""""""""""""
-set nocompatible	" Use gVim defaults
+set nocompatible
 
-set fo=tcrq		" fo to specify default formatoptions
+set fo=tcrq	" fo to specify default formatoptions
 			" t auto-wraps text using textwidth
 			" c auto-wraps comments using textwidth
 			" r auto-inserts the current comment leader
 			" q allows formatting of comments
 
-" allow backspacing over everything in insert mode
+set autoindent
 set backspace=2
+" set backupcopy=auto
 set directory=.,$TEMP
-set nobackup
-set nowritebackup
-set tabstop=4           " Each Tab has 1_spaces equivalent width
-set shiftwidth=4        " Indentation width when using >> and << re-indentation
-set expandtab           " Tabs are expanded to spaces
-set guifont=Meslo\ LG\ M\ for\ Powerline:h12
+set expandtab
+set guifont=Jetbrains\ Mono:h13
 set guioptions-=m
 set guioptions-=T
-set autoindent
-set cindent
 set hidden
 set hlsearch
+set foldlevelstart=99
 set laststatus=2
 set nobackup
-set nowritebackup
-set nowrap
-set number
-set splitright
-set splitbelow
-set signcolumn=yes
 set nomodeline
+set nowrap
+set nowritebackup
+set number
+set shiftwidth=4
+set signcolumn=yes
+set smartindent
+set splitbelow
+set splitright
+set swapfile
+set tabstop=4
+set termguicolors
+" set writebackup
+if has('nvim')
+    set inccommand=split
+endif
 
 syntax on
 filetype plugin on
 
-colorscheme solarized
+colorscheme gruvbox
 set background=dark
 
 """""""""""""""""""""""""""""""""""""""""""""""
-" Disable arrow keys.
+" Mapppings
 """""""""""""""""""""""""""""""""""""""""""""""
 inoremap  <Up>     <NOP>
 inoremap  <Down>   <NOP>
@@ -89,14 +86,9 @@ noremap   <Up>     <NOP>
 noremap   <Down>   <NOP>
 noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
-
-"""""""""""""""""""""""""""""""""""""""""""""""
-" NeoVim
-"""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <leader>p<space> :set paste!<CR>
 if has('nvim')
     tnoremap <Esc> <C-\><C-n>
-
-    set inccommand=split
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""
